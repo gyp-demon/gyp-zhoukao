@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+
+    //
+    <!--数组去重第一种方法-->
+
+
+    Array.prototype.uniq = function () {
+        this.sort();
+        var res = [this[0]];
+        for (var i = 0; i < this.length; i++) {
+            if (this[i] !== res[res.length - 1]) {
+                res.push(this[i]);
+            }
+        }
+        return res;
+    };
+
+    var arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0];
+
+    console.log(arr.uniq());
+
+
+    //
+    <!--数组去重第二种方法-->
+
+
+    Array.prototype.remove = function () {
+        var res = [];
+        var json = [];
+        for (var i = 0; i < this.length; i++) {
+            if (!json[this[i]]) {
+                res.push(this[i]);
+                json[this[i]] = 1;
+            }
+        }
+        return res;
+
+    };
+
+    var arr1 = [112, 122, 34, '你好', 112, 122, 34, '你好', 'str', 'str1'];
+
+    console.log(arr1.remove());
+
+
+</script>
+
+
+</body>
+</html>
